@@ -1,15 +1,12 @@
 import {useState} from 'react';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import DeleteIcon from '@mui/icons-material/Delete';
-import IconButton from '@mui/material/IconButton';
-import Button from '@mui/material/Button';
 import {connect} from 'react-redux';
 
 import dateFormat from '../utils/dateFormat';
 import {getListSearch, getItemDetail, deleteListItem} from '../store/actions/list';
-import {Alert, Collapse, List, Modal} from "antd";
+import {Alert, Button, Collapse, List, Modal} from "antd";
 import CollapsePanel from "antd/es/collapse/CollapsePanel.js";
 import {DeleteOutlined, EyeOutlined} from "@ant-design/icons";
+import {ListItemText} from "@mui/material";
 function ListSearches({
                           onClickItem,
                           ...props

@@ -18,5 +18,6 @@ Before running this project locally, make sure you have the following installed:
 
 ## Getting Started
 
-cd andersen-places-autocomplete
-npm run dev
+`cd andersen-places-autocomplete`
+
+`npm run dev`

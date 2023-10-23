@@ -1,12 +1,12 @@
 import {useState} from 'react';
 import {connect} from 'react-redux';
-
 import dateFormat from '../utils/dateFormat';
 import {getListSearch, getItemDetail, deleteListItem} from '../store/actions/list';
-import {Alert, Button, Collapse, List, Modal} from "antd";
+import {Alert, Button, Collapse, Modal, List, Typography} from "antd";
 import CollapsePanel from "antd/es/collapse/CollapsePanel.js";
 import {DeleteOutlined, EyeOutlined} from "@ant-design/icons";
-import {ListItemText} from "@mui/material";
+
+const { Text } = Typography;
 function ListSearches({
                           onClickItem,
                           ...props
@@ -70,16 +70,19 @@ function ListSearches({
                                                <Button type="primary" shape="circle" icon={<EyeOutlined />}
                                                        onClick={() => onClickItemDetail(item)}/>
                                                ,
-                                               <Button type="primary" shape="circle" icon={<DeleteOutlined/>}
+                                               <Button danger type="primary" shape="circle" icon={<DeleteOutlined/>}
                                                        onClick={() => onClickOpenDialog(item)}/>
                                            ]
                                        }
                             >
-                                <ListItemText
-                                    primary={item.title}
-                                    secondary={parseDate(item.created_at)}
-                                    title={item.title}
-                                />
+                                <div>
+                                    <Typography>
+                                        <Text strong>{item.title}</Text>
+                                    </Typography>
+                                    <Typography>
+                                        <Text type="secondary">{parseDate(item.created_at)}</Text>
+                                    </Typography>
+                                </div>
                             </List.Item>
                         )}
                     </List>
@@ -100,6 +103,7 @@ function ListSearches({
                 onClose={onCloseDialog}
                 onOk={onDeleteConfirm}
                 okText="Delete"
+                okType="danger"
                 onCancel={onCloseDialog}
             >
                 <p>Are you sure to delete {selectedItemForDeleting?.title || "this item"} ?</p>
